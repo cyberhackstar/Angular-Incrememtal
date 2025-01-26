@@ -1,0 +1,165 @@
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-add-flight',
+  templateUrl: './add-flight.component.html',
+  styleUrls: ['./add-flight.component.css']
+})
+export class AddFlightComponent {
+  addFlightForm: FormGroup;
+
+  constructor(private fb: FormBuilder) {
+    this.addFlightForm = this.fb.group({
+      flightNumber: ['', Validators.required],
+      airline: ['', Validators.required],
+      departureAirport: ['', Validators.required],
+      arrivalAirport: ['', Validators.required],
+      departureTime: ['', Validators.required],
+      arrivalTime: ['', Validators.required],
+      price: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]]
+    });
+  }
+
+  onSubmit() {
+    if (this.addFlightForm.valid) {
+      console.log('Form Submitted', this.addFlightForm.value);
+      // Implement your logic to add the flight here
+    }
+  }
+}
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="form-wrapper">
+    <h2>Add Flight</h2>
+    <form [formGroup]="addFlightForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="flightNumber">Flight Number</label>
+        <input id="flightNumber" formControlName="flightNumber" required>
+        <div *ngIf="addFlightForm.get('flightNumber')?.touched && addFlightForm.get('flightNumber')?.invalid" class="error">
+          Flight Number is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="airline">Airline</label>
+        <input id="airline" formControlName="airline" required>
+        <div *ngIf="addFlightForm.get('airline')?.touched && addFlightForm.get('airline')?.invalid" class="error">
+          Airline is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="departureAirport">Departure Airport</label>
+        <input id="departureAirport" formControlName="departureAirport" required>
+        <div *ngIf="addFlightForm.get('departureAirport')?.touched && addFlightForm.get('departureAirport')?.invalid" class="error">
+          Departure Airport is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="arrivalAirport">Arrival Airport</label>
+        <input id="arrivalAirport" formControlName="arrivalAirport" required>
+        <div *ngIf="addFlightForm.get('arrivalAirport')?.touched && addFlightForm.get('arrivalAirport')?.invalid" class="error">
+          Arrival Airport is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="departureTime">Departure Time</label>
+        <input id="departureTime" type="datetime-local" formControlName="departureTime" required>
+        <div *ngIf="addFlightForm.get('departureTime')?.touched && addFlightForm.get('departureTime')?.invalid" class="error">
+          Departure Time is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="arrivalTime">Arrival Time</label>
+        <input id="arrivalTime" type="datetime-local" formControlName="arrivalTime" required>
+        <div *ngIf="addFlightForm.get('arrivalTime')?.touched && addFlightForm.get('arrivalTime')?.invalid" class="error">
+          Arrival Time is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input id="price" formControlName="price" required>
+        <div *ngIf="addFlightForm.get('price')?.touched && addFlightForm.get('price')?.invalid" class="error">
+          <div *ngIf="addFlightForm.get('price')?.errors?.['required']">Price is required</div>
+          <div *ngIf="addFlightForm.get('price')?.errors?.['pattern']">Enter a valid price</div>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="addFlightForm.invalid">Add Flight</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form-wrapper {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #aaa;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+}
+
+
