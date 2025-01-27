@@ -1,0 +1,208 @@
+----------+AuthService for navbar-----------
+
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AuthService {
+  // Tracks if the user is logged in
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
+
+  // Tracks the user's role ('Admin' or 'Passenger')
+  private userRoleSubject = new BehaviorSubject<string | null>(null);
+  userRole$ = this.userRoleSubject.asObservable();
+
+  // Tracks the user's name
+  private usernameSubject = new BehaviorSubject<string | null>(null);
+  username$ = this.usernameSubject.asObservable();
+
+  // Simulate login
+  login(role: string, username: string) {
+    this.isLoggedInSubject.next(true);
+    this.userRoleSubject.next(role);
+    this.usernameSubject.next(username);
+  }
+
+  // Simulate logout
+  logout() {
+    this.isLoggedInSubject.next(false);
+    this.userRoleSubject.next(null);
+    this.usernameSubject.next(null);
+  }
+}
+
+
+
+
+
+
+
+
+
+--------nav.ts---------
+
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
+})
+export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean = false;
+  userRole: string | null = null;
+  username: string | null = null;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    // Subscribe to the login state
+    this.authService.isLoggedIn$.subscribe((status) => {
+      this.isLoggedIn = status;
+    });
+
+    // Subscribe to the user role
+    this.authService.userRole$.subscribe((role) => {
+      this.userRole = role;
+    });
+
+    // Subscribe to the username
+    this.authService.username$.subscribe((name) => {
+      this.username = name;
+    });
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+}
+
+
+
+
+
+
+
+
+----------html/css----------
+
+
+
+
+
+
+
+<nav class="navbar">
+  <div class="navbar-brand">SkyBooker</div>
+  <div class="navbar-links">
+    <!-- Navbar for visitors -->
+    <ng-container *ngIf="!isLoggedIn">
+      <a href="/register">Register</a>
+      <a href="/login">Login</a>
+      <a href="/">Home</a>
+    </ng-container>
+
+    <!-- Navbar for logged-in Admin -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'Admin'">
+      <span>Welcome, {{ username }}</span>
+      <a href="/">Home</a>
+      <a href="/flights">Flight</a>
+      <div class="dropdown">
+        <button class="dropdown-button">Manage Booking</button>
+        <div class="dropdown-content">
+          <a href="/add-flight">Add Flight</a>
+          <a href="/manage-flights">Manage Flights</a>
+        </div>
+      </div>
+      <button (click)="logout()">Logout</button>
+    </ng-container>
+
+    <!-- Navbar for logged-in Passenger -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'Passenger'">
+      <span>Welcome, {{ username }}</span>
+      <a href="/">Home</a>
+      <a href="/book-flight">Book Flight</a>
+      <a href="/history">History</a>
+      <button (click)="logout()">Logout</button>
+    </ng-container>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-button {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: black;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: black;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+
