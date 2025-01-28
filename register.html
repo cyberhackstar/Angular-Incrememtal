@@ -1,0 +1,155 @@
+<div class="register-container">
+  <h2>Register</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input id="username" formControlName="username" type="text" placeholder="Enter username" />
+      <div class="error-message" *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+        Username is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" formControlName="email" type="email" placeholder="Enter email" />
+      <div class="error-message" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" formControlName="password" type="password" placeholder="Enter password" />
+      <div class="error-message" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        Password must be at least 6 characters long.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" formControlName="confirmPassword" type="password" placeholder="Confirm password" />
+      <div class="error-message" *ngIf="registerForm.errors?.mismatch && registerForm.get('confirmPassword')?.touched">
+        Passwords do not match.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="mobileNumber">Mobile Number</label>
+      <input id="mobileNumber" formControlName="mobileNumber" type="text" placeholder="Enter mobile number" />
+      <div class="error-message" *ngIf="registerForm.get('mobileNumber')?.invalid && registerForm.get('mobileNumber')?.touched">
+        Enter a valid 10-digit mobile number.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="userRole">User Role</label>
+      <select id="userRole" formControlName="userRole">
+        <option value="" disabled>Select role</option>
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+      </select>
+      <div class="error-message" *ngIf="registerForm.get('userRole')?.invalid && registerForm.get('userRole')?.touched">
+        Please select a role.
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="registerForm.invalid">Register</button>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------css-----------------------------------------
+
+
+
+
+.register-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.register-form .form-group {
+  margin-bottom: 15px;
+}
+
+.register-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.register-form input,
+.register-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.register-form input:focus,
+.register-form select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.register-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error-message {
+  font-size: 12px;
+  color: #dc3545;
+  margin-top: 5px;
+}
+
+.error-message::before {
+  content: '⚠ ';
+}
