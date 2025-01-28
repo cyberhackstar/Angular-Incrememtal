@@ -1,0 +1,135 @@
+<div class="history-container">
+  <h2>My Booking History</h2>
+
+  <table class="history-table" *ngIf="bookingHistory?.length > 0; else noHistory">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Booking ID</th>
+        <th>Flight Number</th>
+        <th>Booking Date</th>
+        <th>Number of Passengers</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookingHistory; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ booking.bookingId }}</td>
+        <td>{{ booking.flight.flightNumber }}</td>
+        <td>{{ booking.bookingDate | date: 'shortDate' }}</td>
+        <td>{{ booking.numberOfPassengers }}</td>
+        <td>
+          <span
+            class="status-badge"
+            [ngClass]="{
+              'confirmed': booking.status === 'Confirmed',
+              'cancelled': booking.status === 'Cancelled',
+              'pending': booking.status === 'Pending'
+            }"
+          >
+            {{ booking.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noHistory>
+    <div class="no-history">
+      <p>You have no booking history yet.</p>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------css--------------------------------
+
+
+
+.history-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.history-table th,
+.history-table td {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.history-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.history-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: white;
+}
+
+.status-badge.confirmed {
+  background-color: #28a745;
+}
+
+.status-badge.cancelled {
+  background-color: #dc3545;
+}
+
+.status-badge.pending {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.no-history {
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  margin-top: 20px;
+}
