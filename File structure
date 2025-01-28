@@ -1,0 +1,62 @@
+angularapp/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── add-flight/
+│   │   │   │   ├── add-flight.component.html
+│   │   │   │   ├── add-flight.component.ts
+│   │   │   │   ├── add-flight.component.css
+│   │   │   ├── booking-form/
+│   │   │   │   ├── booking-form.component.html
+│   │   │   │   ├── booking-form.component.ts
+│   │   │   │   ├── booking-form.component.css
+│   │   │   ├── error/
+│   │   │   │   ├── error.component.html
+│   │   │   │   ├── error.component.ts
+│   │   │   │   ├── error.component.css
+│   │   │   ├── flight-list/
+│   │   │   │   ├── flight-list.component.html
+│   │   │   │   ├── flight-list.component.ts
+│   │   │   │   ├── flight-list.component.css
+│   │   │   ├── home/
+│   │   │   │   ├── home.component.html
+│   │   │   │   ├── home.component.ts
+│   │   │   │   ├── home.component.css
+│   │   │   ├── login/
+│   │   │   │   ├── login.component.html
+│   │   │   │   ├── login.component.ts
+│   │   │   │   ├── login.component.css
+│   │   │   ├── manage-booking/
+│   │   │   │   ├── manage-booking.component.html
+│   │   │   │   ├── manage-booking.component.ts
+│   │   │   │   ├── manage-booking.component.css
+│   │   │   ├── my-history/
+│   │   │   │   ├── my-history.component.html
+│   │   │   │   ├── my-history.component.ts
+│   │   │   │   ├── my-history.component.css
+│   │   │   ├── navbar/
+│   │   │   │   ├── navbar.component.html
+│   │   │   │   ├── navbar.component.ts
+│   │   │   │   ├── navbar.component.css
+│   │   │   ├── register/
+│   │   │   │   ├── register.component.html
+│   │   │   │   ├── register.component.ts
+│   │   │   │   ├── register.component.css
+│   │   ├── models/
+│   │   │   ├── booking.ts
+│   │   │   ├── flight.ts
+│   │   │   ├── login.ts
+│   │   │   ├── user.ts
+│   │   ├── services/
+│   │   │   ├── auth.service.ts
+│   │   │   ├── booking.service.ts
+│   │   │   ├── flight.service.ts
+│   │   │   ├── utility.service.ts
+│   │   ├── app-routing.module.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.ts
+│   │   ├── app.component.css
+│   │   ├── app.module.ts
+│   ├── index.html
+│   ├── styles.css
+├── package.json
