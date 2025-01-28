@@ -1,0 +1,174 @@
+<div class="booking-form-container">
+  <h2>Flight Booking Form</h2>
+  <form [formGroup]="bookingForm" (ngSubmit)="addNewBooking()">
+    <div class="form-group">
+      <label for="flightNumber">Flight Number:</label>
+      <input
+        id="flightNumber"
+        type="text"
+        formControlName="flightNumber"
+        placeholder="Flight number"
+        readonly
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="bookingDate">Booking Date:</label>
+      <input
+        id="bookingDate"
+        type="date"
+        formControlName="bookingDate"
+        placeholder="Select booking date"
+      />
+      <div
+        *ngIf="
+          bookingForm.get('bookingDate')?.touched &&
+          bookingForm.get('bookingDate')?.invalid
+        "
+        class="error"
+      >
+        Booking date is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfPassengers">Number of Passengers:</label>
+      <input
+        id="numberOfPassengers"
+        type="number"
+        formControlName="numberOfPassengers"
+        placeholder="Enter number of passengers"
+      />
+      <div
+        *ngIf="
+          bookingForm.get('numberOfPassengers')?.touched &&
+          bookingForm.get('numberOfPassengers')?.invalid
+        "
+        class="error"
+      >
+        Number of passengers is required.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button
+        type="submit"
+        class="btn-submit"
+        [disabled]="!bookingForm.valid"
+      >
+        Book Now
+      </button>
+      <button type="button" class="btn-reset" (click)="bookingForm.reset()">
+        Reset
+      </button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+---------------------css--------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.booking-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.booking-form-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-submit {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-submit:disabled {
+  background-color: #b3d7ff;
+  cursor: not-allowed;
+}
+
+.btn-submit:hover {
+  background-color: #0056b3;
+}
+
+.btn-reset {
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-reset:hover {
+  background-color: #d32f2f;
+}
