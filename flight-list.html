@@ -1,0 +1,155 @@
+<div class="flight-list-container">
+  <h2>Available Flights</h2>
+  <div *ngIf="flights.length > 0; else noFlightsTemplate">
+    <table>
+      <thead>
+        <tr>
+          <th>Flight Number</th>
+          <th>Airline</th>
+          <th>Departure</th>
+          <th>Arrival</th>
+          <th>Departure Time</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of flights">
+          <td>{{ flight.flightNumber }}</td>
+          <td>{{ flight.airline }}</td>
+          <td>{{ flight.departureLocation }}</td>
+          <td>{{ flight.arrivalLocation }}</td>
+          <td>{{ flight.departureTime }}</td>
+          <td>{{ flight.arrivalTime }}</td>
+          <td>{{ flight.price | currency:'USD' }}</td>
+          <td class="actions">
+            <button class="btn-book" (click)="navigateToBooking(flight.flightId)">Book</button>
+            <button class="btn-update" (click)="updateFlight(flight.flightId)">Edit</button>
+            <button class="btn-delete" (click)="deleteFlight(flight.flightId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noFlightsTemplate>
+    <p class="no-flights-message">No flights available at the moment. Please check back later.</p>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------css-------------------------------------
+
+
+
+
+.flight-list-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flight-list-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+thead {
+  background-color: #007bff;
+  color: white;
+}
+
+thead th {
+  padding: 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-book,
+.btn-update,
+.btn-delete {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-book {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-book:hover {
+  background-color: #218838;
+}
+
+.btn-update {
+  background-color: #ffc107;
+  color: black;
+}
+
+.btn-update:hover {
+  background-color: #e0a800;
+}
+
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #c82333;
+}
+
+.no-flights-message {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+  margin-top: 20px;
+}
