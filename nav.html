@@ -1,0 +1,184 @@
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+  isAuthenticated: boolean = false;
+  userRole: string | null = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.checkUserStatus();
+  }
+
+  checkUserStatus(): void {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.userRole = this.authService.getUserRole();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.checkUserStatus();
+    this.router.navigate(['/login']);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------html------------------------
+
+
+<nav class="navbar">
+  <div class="brand">SkyBooker</div>
+
+  <div *ngIf="!isAuthenticated" class="nav-links">
+    <a routerLink="/register">Register</a>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/home">Home</a>
+  </div>
+
+  <div *ngIf="isAuthenticated && userRole === 'Admin'" class="nav-links">
+    <span class="user-role">admin / Admin</span>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/manage-booking">Manage Booking</a>
+    <div class="dropdown">
+      <button class="dropbtn">Manage Flights</button>
+      <div class="dropdown-content">
+        <a routerLink="/add-flight">Add Flight</a>
+        <a routerLink="/manage-flights">Manage Flights</a>
+      </div>
+    </div>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+
+  <div *ngIf="isAuthenticated && userRole === 'Passenger'" class="nav-links">
+    <span class="user-role">user12e / Passenger</span>
+    <a routerLink="/home">Home</a>
+    <a routerLink="/book-flight">Book Flight</a>
+    <a routerLink="/history">History</a>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------css----------------------------------
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 20px;
+  color: white;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.user-role {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.logout-btn {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
