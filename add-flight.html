@@ -1,0 +1,94 @@
+<div class="add-flight-container">
+  <h2 *ngIf="!isEditing">Add New Flight</h2>
+  <h2 *ngIf="isEditing">Edit Flight</h2>
+
+  <form [formGroup]="flightForm" (ngSubmit)="addNewFlight()">
+    <div class="form-group">
+      <label for="flightNumber">Flight Number:</label>
+      <input
+        id="flightNumber"
+        type="text"
+        formControlName="flightNumber"
+        placeholder="Enter flight number"
+      />
+      <div *ngIf="flightForm.get('flightNumber')?.touched && flightForm.get('flightNumber')?.invalid" class="error">
+        Flight number is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="airline">Airline:</label>
+      <input id="airline" type="text" formControlName="airline" placeholder="Enter airline name" />
+      <div *ngIf="flightForm.get('airline')?.touched && flightForm.get('airline')?.invalid" class="error">
+        Airline name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="departureLocation">Departure Location:</label>
+      <input
+        id="departureLocation"
+        type="text"
+        formControlName="departureLocation"
+        placeholder="Enter departure location"
+      />
+      <div *ngIf="flightForm.get('departureLocation')?.touched && flightForm.get('departureLocation')?.invalid" class="error">
+        Departure location is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalLocation">Arrival Location:</label>
+      <input
+        id="arrivalLocation"
+        type="text"
+        formControlName="arrivalLocation"
+        placeholder="Enter arrival location"
+      />
+      <div *ngIf="flightForm.get('arrivalLocation')?.touched && flightForm.get('arrivalLocation')?.invalid" class="error">
+        Arrival location is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="departureTime">Departure Time:</label>
+      <input
+        id="departureTime"
+        type="datetime-local"
+        formControlName="departureTime"
+        placeholder="Select departure time"
+      />
+      <div *ngIf="flightForm.get('departureTime')?.touched && flightForm.get('departureTime')?.invalid" class="error">
+        Departure time is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="arrivalTime">Arrival Time:</label>
+      <input
+        id="arrivalTime"
+        type="datetime-local"
+        formControlName="arrivalTime"
+        placeholder="Select arrival time"
+      />
+      <div *ngIf="flightForm.get('arrivalTime')?.touched && flightForm.get('arrivalTime')?.invalid" class="error">
+        Arrival time is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input id="price" type="number" formControlName="price" placeholder="Enter price in USD" />
+      <div *ngIf="flightForm.get('price')?.touched && flightForm.get('price')?.invalid" class="error">
+        Price is required and must be valid.
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" [disabled]="!flightForm.valid" class="btn-submit">
+        {{ flightId === 0 ? 'Add Flight' : 'Update Flight' }}
+      </button>
+      <button type="button" class="btn-reset" (click)="flightForm.reset()">Reset</button>
+    </div>
+  </form>
+</div>
