@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  constructor() {}
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('userRole');
+  }
+
+  getUserRole(): string | null {
+    return localStorage.getItem('userRole');
+  }
+
+  login(userRole: string): void {
+    localStorage.setItem('userRole', userRole);
+  }
+
+  logout(): void {
+    localStorage.removeItem('userRole');
+  }
+}
