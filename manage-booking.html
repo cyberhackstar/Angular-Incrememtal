@@ -1,0 +1,193 @@
+<div class="manage-bookings-container">
+  <h2>Manage Bookings</h2>
+
+  <table class="bookings-table" *ngIf="bookings.length > 0; else noBookings">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Booking ID</th>
+        <th>Flight Number</th>
+        <th>Passenger Name</th>
+        <th>Booking Date</th>
+        <th>Number of Passengers</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ booking.bookingId }}</td>
+        <td>{{ booking.flight.flightNumber }}</td>
+        <td>{{ booking.user.name }}</td>
+        <td>{{ booking.bookingDate | date: 'shortDate' }}</td>
+        <td>{{ booking.numberOfPassengers }}</td>
+        <td>
+          <span
+            class="status-badge"
+            [ngClass]="{
+              'confirmed': booking.status === 'Confirmed',
+              'cancelled': booking.status === 'Cancelled',
+              'pending': booking.status === 'Pending'
+            }"
+          >
+            {{ booking.status }}
+          </span>
+        </td>
+        <td>
+          <button
+            class="btn-update confirm"
+            (click)="updateBookingStatus(booking.bookingId, 'Confirmed')"
+          >
+            Confirm
+          </button>
+          <button
+            class="btn-update cancel"
+            (click)="updateBookingStatus(booking.bookingId, 'Cancelled')"
+          >
+            Cancel
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noBookings>
+    <div class="no-bookings">
+      <p>No bookings available at the moment.</p>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------css------------------------------------
+
+
+
+
+
+
+
+
+
+.manage-bookings-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h2 {
+  text-align: center;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.bookings-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 auto;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.bookings-table th,
+.bookings-table td {
+  padding: 12px;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.bookings-table th {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.bookings-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: white;
+}
+
+.status-badge.confirmed {
+  background-color: #28a745;
+}
+
+.status-badge.cancelled {
+  background-color: #dc3545;
+}
+
+.status-badge.pending {
+  background-color: #ffc107;
+  color: #333;
+}
+
+.btn-update {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  margin: 0 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-update.confirm {
+  background-color: #28a745;
+}
+
+.btn-update.confirm:hover {
+  background-color: #218838;
+}
+
+.btn-update.cancel {
+  background-color: #dc3545;
+}
+
+.btn-update.cancel:hover {
+  background-color: #c82333;
+}
+
+.no-bookings {
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  margin-top: 20px;
+}
