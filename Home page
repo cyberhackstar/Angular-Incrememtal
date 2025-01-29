@@ -1,0 +1,170 @@
+<div class="hero">
+  <div class="hero-content">
+    <h1>Welcome to SkyBooker</h1>
+    <p>Book your flights easily and explore the world with comfort.</p>
+    <a routerLink="/book-flight" class="cta-button">Book Now</a>
+  </div>
+</div>
+
+<section class="features">
+  <h2>Why Choose SkyBooker?</h2>
+  <div class="feature-container">
+    <div class="feature">
+      <i class="fas fa-plane-departure"></i>
+      <h3>Easy Booking</h3>
+      <p>Quick and hassle-free booking process.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-dollar-sign"></i>
+      <h3>Best Prices</h3>
+      <p>Get competitive prices for all destinations.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-headset"></i>
+      <h3>24/7 Support</h3>
+      <p>Customer service available round the clock.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© 2025 SkyBooker. All Rights Reserved.</p>
+</footer>
+
+
+
+
+
+
+
+
+
+--------------css-----------------
+
+
+
+
+
+
+
+
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Hero Section */
+.hero {
+  background: url('https://source.unsplash.com/1600x900/?airplane,travel') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #ff4c4c;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.cta-button:hover {
+  background: #e03c3c;
+}
+
+/* Features Section */
+.features {
+  text-align: center;
+  padding: 50px 20px;
+  background: white;
+}
+
+.features h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.feature-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.feature {
+  background: #ffeded;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  transition: 0.3s;
+}
+
+.feature i {
+  font-size: 2.5rem;
+  color: #ff4c4c;
+}
+
+.feature h3 {
+  margin-top: 10px;
+  color: #333;
+}
+
+.feature p {
+  color: #666;
+}
+
+.feature:hover {
+  background: #ffcccc;
+  transform: translateY(-5px);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #333;
+  color: white;
+  margin-top: 50px;
+}
+
+
