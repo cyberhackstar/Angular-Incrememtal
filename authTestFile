@@ -118,3 +118,35 @@ public class UserServiceImpl implements UserService
    
 }
 
+
+
+
+
+
+
+import { Injectable } from '@angular/core';
+import { User } from '../models/user.model';
+import { Login } from '../models/login.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class AuthService {
+
+  // apiUrl:string="https://ide-dccadbbbafbbfbbceedbdfbafbddafcfcc.premiumproject.examly.io/proxy/8080/api";
+  apiUrl:string="https://ide-ccffffdefbceedbdfbafbddafcfcc.premiumproject.examly.io/proxy/8080/api";//Bhawesh
+  
+  constructor(private http:HttpClient) { }
+
+  register(user:User):Observable<any>{
+    return this.http.post<any>(this.apiUrl+"/register",user);
+  }
+
+  login(login:Login):Observable<any>{
+    return this.http.post<any>(this.apiUrl+"/login",login);
+  }
+
+}
