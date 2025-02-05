@@ -1,0 +1,120 @@
+package com.examly.springapp.controller;
+
+
+import org.springframework.web.bind.annotation.RestController;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.examly.springapp.model.User;
+import com.examly.springapp.service.UserServiceImpl;
+
+
+@RestController
+@CrossOrigin
+public class AuthController {
+
+    @Autowired
+    private UserServiceImpl userService;
+
+
+    @PostMapping("/api/register")
+    public ResponseEntity<?> registerUser(@RequestBody User u){
+        return ResponseEntity.status(201).body(userService.register(u));
+    }
+
+    @PostMapping("/api/login")
+    public ResponseEntity<?> loginUser(@RequestBody User u){
+        return ResponseEntity.status(200).body(userService.login(u));
+    }
+    @GetMapping("/api/user")
+    public ResponseEntity<?> getAllUser(){
+        return ResponseEntity.status(200).body(userService.getAllUsers());
+    }
+
+    @GetMapping("/api/user/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable Integer userId){
+        return ResponseEntity.status(200).body(userService.getUserById(userId));
+    }
+}
+
+
+
+
+package com.examly.springapp.model;
+import jakarta.persistence.*;
+
+@Entity
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;
+    private String email;
+    private String password;
+    private String username;
+    private String mobileNumber;
+    private String userRole;
+//getter
+//setter
+    
+    }
+
+
+
+
+package com.examly.springapp.service;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.examly.springapp.model.User;
+import com.examly.springapp.repository.UserRepo;
+import com.examly.springapp.service.UserService;
+
+
+@Service
+public class UserServiceImpl implements UserService
+{
+
+
+
+    @Autowired
+    private UserRepo userRepo;
+
+
+    @Override
+    public List<User> getAllUsers() {
+       return userRepo.findAll();
+    }
+
+    @Override
+    public User getUserById(int userId) {
+        return userRepo.findById(userId).get();
+    }
+
+    @Override
+    public User register(User u) {        
+       return userRepo.save(u);
+    }
+
+    @Override
+    public User login(User u) {
+        User approve= userRepo.findById(u.getUserId()).get();
+        if(approve!=null){
+            return approve;
+        }
+       return null;
+    }
+
+   
+   
+}
+
