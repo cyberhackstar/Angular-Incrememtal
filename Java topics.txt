@@ -1,0 +1,2159 @@
+1. History & Features of Java
+✅ History
+Developed by James Gosling at Sun Microsystems in 1995.
+
+Originally called Oak.
+
+Acquired by Oracle in 2010.
+
+✅ Features
+Object-Oriented
+
+Platform Independent (Write Once, Run Anywhere - WORA)
+
+Simple, Secure, Robust, Multithreaded, High Performance
+
+java
+Copy
+Edit
+// Simple Java Program
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, Java!");
+    }
+}
+🔹 2. JVM, JRE, JDK
+JVM (Java Virtual Machine): Runs Java bytecode.
+
+JRE (Java Runtime Environment): JVM + Libraries.
+
+JDK (Java Development Kit): JRE + Development tools like javac, debugger.
+
+🔹 3. Program Structure
+java
+Copy
+Edit
+public class Example {
+    public static void main(String[] args) {
+        System.out.println("Java Program Structure");
+    }
+}
+Class: public class Example
+
+Main method: public static void main
+
+🔹 4. Data Types
+Primitive: int, float, char, boolean, etc.
+
+Non-Primitive: String, Arrays, Classes
+
+java
+Copy
+Edit
+int age = 25;
+float price = 99.99f;
+char grade = 'A';
+boolean isJavaFun = true;
+🔹 5. Variables
+Local, Instance, and Static variables.
+
+java
+Copy
+Edit
+public class VariableExample {
+    static int staticVar = 10;
+    int instanceVar = 20;
+
+    public void show() {
+        int localVar = 30;
+        System.out.println(staticVar + instanceVar + localVar);
+    }
+}
+
+🔹 6. Type Casting
+Implicit (widening) and Explicit (narrowing)
+
+java
+Copy
+Edit
+int a = 10;
+double b = a; // Implicit
+
+double x = 10.5;
+int y = (int) x; // Explicit
+
+
+13. this, super
+this: Refers to the current class instance.
+
+super: Refers to the parent class.
+
+java
+Copy
+Edit
+class Animal {
+    String name = "Animal";
+}
+
+class Dog extends Animal {
+    String name = "Dog";
+
+    void printNames() {
+        System.out.println(this.name); // Dog
+        System.out.println(super.name); // Animal
+    }
+}
+14. Inheritance
+Enables one class to inherit properties and methods from another.
+
+extends keyword is used.
+
+java
+Copy
+Edit
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog barks");
+    }
+}
+15. Polymorphism
+One interface, many implementations.
+
+Achieved via method overloading and method overriding.
+
+java
+Copy
+Edit
+// Overriding
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+16. Overloading & Overriding
+Overloading: Same method name, different parameters.
+
+Overriding: Subclass redefines parent class method.
+
+java
+Copy
+Edit
+class MathUtils {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+17. Abstraction & Interface
+Abstraction: Hides internal details, shows essential features.
+
+Interface: Blueprint of class, contains abstract methods.
+
+java
+Copy
+Edit
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+interface Drawable {
+    void draw();
+}
+
+class Square implements Drawable {
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+}
+18. Encapsulation
+Wrapping data with code. Achieved using private fields + public getters/setters.
+
+java
+Copy
+Edit
+class Student {
+    private int age;
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+Next up will be Strings — let me know if you'd like me to continue or pause here.
+
+
+
+
+
+
+You said:
+continue
+
+
+ChatGPT said:
+Awesome! Let’s move on to Strings in Java.
+
+19. String
+Sequence of characters.
+
+Immutable (cannot be changed once created).
+
+java
+Copy
+Edit
+String str = "Hello";
+System.out.println(str.length());       // 5
+System.out.println(str.charAt(1));      // 'e'
+System.out.println(str.toUpperCase());  // "HELLO"
+20. StringBuilder
+Mutable version of String.
+
+Faster and more efficient for modifications.
+
+java
+Copy
+Edit
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World");
+System.out.println(sb); // "Hello World"
+21. StringBuffer
+Same as StringBuilder but thread-safe (synchronized).
+
+java
+Copy
+Edit
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" Java");
+System.out.println(sbf); // "Hello Java"
+22. Common String Methods
+java
+Copy
+Edit
+String s = "Java Programming";
+
+System.out.println(s.contains("Java"));      // true
+System.out.println(s.indexOf("a"));          // 1
+System.out.println(s.replace("a", "x"));     // Jxvx Progrxmming
+System.out.println(s.substring(5, 11));      // Progra
+23. Immutability
+Strings cannot be changed after creation.
+
+Operations create new String objects.
+
+java
+Copy
+Edit
+String a = "hello";
+a.concat(" world");
+System.out.println(a); // "hello" (not "hello world")
+24. String Pool
+Java maintains a pool of strings to optimize memory.
+
+Strings created using literals go into this pool.
+
+java
+Copy
+Edit
+String s1 = "Java";
+String s2 = "Java";
+System.out.println(s1 == s2); // true (same reference from pool)
+
+String s3 = new String("Java");
+System.out.println(s1 == s3); // false (new object)
+25. StringTokenizer
+Used to split strings into tokens based on a delimiter.
+
+java
+Copy
+Edit
+import java.util.StringTokenizer;
+
+StringTokenizer st = new StringTokenizer("Java is fun", " ");
+while (st.hasMoreTokens()) {
+    System.out.println(st.nextToken());
+}
+Next up: Arrays – 1D & 2D, Traversal, Sorting, Searching. Ready to go on?
+
+
+
+
+
+26. 1D & 2D Arrays
+1D Array: Linear data structure
+
+2D Array: Matrix-like structure (array of arrays)
+
+java
+Copy
+Edit
+// 1D Array
+int[] arr = {1, 2, 3, 4};
+
+// 2D Array
+int[][] matrix = {
+    {1, 2},
+    {3, 4}
+};
+27. Initialization
+java
+Copy
+Edit
+int[] nums = new int[5]; // default 0 values
+nums[0] = 10;
+nums[1] = 20;
+
+int[][] grid = new int[2][3];
+grid[0][1] = 5;
+28. Traversal
+java
+Copy
+Edit
+// 1D
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);
+}
+
+// 2D
+for (int i = 0; i < matrix.length; i++) {
+    for (int j = 0; j < matrix[i].length; j++) {
+        System.out.print(matrix[i][j] + " ");
+    }
+    System.out.println();
+}
+29. Sorting
+Use Arrays.sort() for built-in sorting
+
+java
+Copy
+Edit
+import java.util.Arrays;
+
+int[] arr = {5, 3, 2, 4, 1};
+Arrays.sort(arr);
+
+System.out.println(Arrays.toString(arr)); // [1, 2, 3, 4, 5]
+30. Searching
+Linear search for unsorted
+
+Binary search for sorted arrays
+
+java
+Copy
+Edit
+// Linear
+int target = 4;
+for (int i = 0; i < arr.length; i++) {
+    if (arr[i] == target) {
+        System.out.println("Found at index " + i);
+    }
+}
+
+// Binary Search
+int idx = Arrays.binarySearch(arr, 4);
+System.out.println("Found at index: " + idx);
+Next section will cover Collections: List, Set, Map, Queue, etc.
+Continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Awesome! Let's dive into Collections in Java – starting with List, Set, Map, and more.
+
+31. List: ArrayList, LinkedList
+ArrayList: Fast random access, slower insertion/deletion.
+
+LinkedList: Better for frequent inserts/removals.
+
+java
+Copy
+Edit
+import java.util.*;
+
+List<String> arrayList = new ArrayList<>();
+arrayList.add("A");
+arrayList.add("B");
+
+List<String> linkedList = new LinkedList<>();
+linkedList.add("X");
+linkedList.add("Y");
+32. Set: HashSet, TreeSet
+HashSet: Unordered, no duplicates.
+
+TreeSet: Sorted, no duplicates.
+
+java
+Copy
+Edit
+Set<Integer> hashSet = new HashSet<>();
+hashSet.add(3); hashSet.add(1); hashSet.add(3); // [1, 3]
+
+Set<Integer> treeSet = new TreeSet<>();
+treeSet.add(2); treeSet.add(5); treeSet.add(1); // [1, 2, 5]
+33. Map: HashMap, TreeMap
+HashMap: Unordered key-value pairs.
+
+TreeMap: Sorted key-value pairs.
+
+java
+Copy
+Edit
+Map<String, Integer> hashMap = new HashMap<>();
+hashMap.put("a", 10); hashMap.put("b", 20);
+
+Map<String, Integer> treeMap = new TreeMap<>();
+treeMap.put("z", 100); treeMap.put("x", 200);
+34. Queue, Deque
+Queue: FIFO (First-In-First-Out)
+
+Deque: Double-ended queue (add/remove both sides)
+
+java
+Copy
+Edit
+Queue<String> queue = new LinkedList<>();
+queue.add("one"); queue.add("two");
+System.out.println(queue.poll()); // one
+
+Deque<String> deque = new ArrayDeque<>();
+deque.addFirst("start");
+deque.addLast("end");
+System.out.println(deque); // [start, end]
+35. Iterator, ListIterator
+Iterator: One-direction traversal
+
+ListIterator: Two-direction traversal (only for lists)
+
+java
+Copy
+Edit
+List<String> names = Arrays.asList("A", "B", "C");
+
+Iterator<String> it = names.iterator();
+while (it.hasNext()) {
+    System.out.println(it.next());
+}
+
+ListIterator<String> lit = names.listIterator(names.size());
+while (lit.hasPrevious()) {
+    System.out.println(lit.previous());
+}
+36. Comparator, Comparable
+Comparable: Defines natural ordering (compareTo)
+
+Comparator: Defines custom ordering (compare)
+
+java
+Copy
+Edit
+class Student implements Comparable<Student> {
+    int age;
+    Student(int age) { this.age = age; }
+
+    public int compareTo(Student s) {
+        return this.age - s.age;
+    }
+}
+
+Comparator<Student> byAgeDesc = (a, b) -> b.age - a.age;
+Next up: Exception Handling (try-catch, throw, throws, etc.)
+
+Want to continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let’s move on to Exception Handling in Java.
+
+37. try-catch-finally
+Used to handle exceptions gracefully.
+
+finally always executes (even if exception occurs or not).
+
+java
+Copy
+Edit
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Cannot divide by zero!");
+} finally {
+    System.out.println("Always runs.");
+}
+38. throw, throws
+throw: Used to explicitly throw an exception.
+
+throws: Declares that a method might throw an exception.
+
+java
+Copy
+Edit
+// throw
+throw new IllegalArgumentException("Invalid input");
+
+// throws
+public void readFile() throws IOException {
+    FileReader fr = new FileReader("file.txt");
+}
+39. Checked vs Unchecked Exceptions
+Checked: Must be handled at compile-time.
+(e.g., IOException, SQLException)
+
+Unchecked: Runtime exceptions.
+(e.g., ArithmeticException, NullPointerException)
+
+java
+Copy
+Edit
+// Checked
+try {
+    FileReader fr = new FileReader("abc.txt");
+} catch (IOException e) {
+    System.out.println("File not found");
+}
+
+// Unchecked
+String str = null;
+System.out.println(str.length()); // NullPointerException
+40. Custom Exceptions
+You can create your own exceptions by extending Exception.
+
+java
+Copy
+Edit
+class MyException extends Exception {
+    MyException(String message) {
+        super(message);
+    }
+}
+
+public class Test {
+    static void checkAge(int age) throws MyException {
+        if (age < 18) throw new MyException("Not eligible");
+        else System.out.println("Welcome!");
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15);
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+Next up: File Handling and Serialization (FileReader, BufferedReader, etc.)
+
+Shall we go on?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Perfect! Let's continue with File Handling and Serialization in Java.
+
+41. Byte & Character Streams
+Byte Streams: Read/write binary data (e.g., FileInputStream, FileOutputStream)
+
+Character Streams: Read/write character data (e.g., FileReader, FileWriter)
+
+java
+Copy
+Edit
+// Byte Stream
+FileInputStream in = new FileInputStream("data.bin");
+int i;
+while ((i = in.read()) != -1) {
+    System.out.print((char) i);
+}
+in.close();
+42. FileReader, FileWriter
+Used to read and write text files.
+
+java
+Copy
+Edit
+// FileWriter
+FileWriter writer = new FileWriter("output.txt");
+writer.write("Hello, world!");
+writer.close();
+
+// FileReader
+FileReader reader = new FileReader("output.txt");
+int ch;
+while ((ch = reader.read()) != -1) {
+    System.out.print((char) ch);
+}
+reader.close();
+43. BufferedReader
+Faster way to read text using buffering.
+
+java
+Copy
+Edit
+BufferedReader br = new BufferedReader(new FileReader("output.txt"));
+String line;
+while ((line = br.readLine()) != null) {
+    System.out.println(line);
+}
+br.close();
+44. Serialization & Deserialization
+Serialization = Converting object → byte stream.
+
+Deserialization = Byte stream → object.
+
+java
+Copy
+Edit
+// Serializable Class
+class Student implements Serializable {
+    int id;
+    String name;
+    Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+// Serialization
+ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("student.ser"));
+Student s = new Student(101, "Amit");
+out.writeObject(s);
+out.close();
+
+// Deserialization
+ObjectInputStream in = new ObjectInputStream(new FileInputStream("student.ser"));
+Student s2 = (Student) in.readObject();
+System.out.println(s2.id + " " + s2.name);
+in.close();
+Next up: Multithreading (Thread, Runnable, Executor, etc.)
+
+Shall we move ahead?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Awesome! Let's move into Multithreading in Java – handling multiple tasks concurrently.
+
+45. Thread Class
+You can create a thread by extending the Thread class.
+
+java
+Copy
+Edit
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start(); // Start the thread
+    }
+}
+46. Runnable Interface
+Another way to create threads is by implementing Runnable.
+
+java
+Copy
+Edit
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Runnable thread running...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread t = new Thread(new MyRunnable());
+        t.start();
+    }
+}
+47. Thread Lifecycle
+States: NEW → RUNNABLE → RUNNING → BLOCKED/WAITING → TERMINATED
+
+java
+Copy
+Edit
+// You can check thread state like this:
+Thread t = new Thread(() -> {});
+System.out.println(t.getState()); // NEW
+48. Synchronization
+Prevents thread interference by locking critical sections.
+
+java
+Copy
+Edit
+class Counter {
+    int count = 0;
+    synchronized void increment() {
+        count++;
+    }
+}
+49. wait(), notify(), notifyAll()
+Used for inter-thread communication.
+
+java
+Copy
+Edit
+synchronized(obj) {
+    obj.wait();      // waits for notify
+    obj.notify();    // wakes one thread
+    obj.notifyAll(); // wakes all threads
+}
+50. Executor Framework
+Better way to manage thread pools.
+
+java
+Copy
+Edit
+import java.util.concurrent.*;
+
+ExecutorService executor = Executors.newFixedThreadPool(2);
+executor.submit(() -> System.out.println("Task 1 running"));
+executor.shutdown();
+Next: Packages & Access Modifiers (Built-in, custom, public/private/protected)
+
+Continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let’s dive into Packages & Access Modifiers in Java.
+
+51. Built-in Packages
+Java provides several built-in packages like java.util, java.io, java.lang, etc.
+
+java
+Copy
+Edit
+import java.util.*; // Importing entire java.util package
+import java.io.File; // Import specific classes
+52. User-defined Packages
+You can create your own packages to organize classes.
+
+java
+Copy
+Edit
+// Creating a package
+package myPackage;
+
+public class MyClass {
+    public void display() {
+        System.out.println("Hello from MyClass!");
+    }
+}
+
+// Accessing the package
+import myPackage.MyClass;
+
+public class Test {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj.display();
+    }
+}
+53. Access Levels: public, private, protected, default
+public: Accessible anywhere.
+
+private: Accessible only within the class.
+
+protected: Accessible within the package or subclasses.
+
+default (no modifier): Accessible only within the same package.
+
+java
+Copy
+Edit
+public class PublicClass {
+    public int publicVar;
+    private int privateVar;
+    protected int protectedVar;
+    int defaultVar; // package-private
+
+    public void display() {
+        System.out.println(publicVar);
+        System.out.println(privateVar);
+        System.out.println(protectedVar);
+        System.out.println(defaultVar);
+    }
+}
+Next section: Inner Classes (Member, Static Nested, Local, Anonymous classes)
+
+Shall we proceed?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Let's move on to Inner Classes in Java.
+
+54. Member Inner Class
+Defined inside another class, with access to all members of the outer class.
+
+Cannot have static members.
+
+java
+Copy
+Edit
+class Outer {
+    private int num = 10;
+
+    class Inner {
+        void display() {
+            System.out.println("Value from outer: " + num);
+        }
+    }
+
+    void show() {
+        Inner inner = new Inner();
+        inner.display();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        outer.show();
+    }
+}
+55. Static Nested Class
+A static class within another class.
+
+Can only access static members of the outer class.
+
+java
+Copy
+Edit
+class Outer {
+    static int num = 20;
+
+    static class Nested {
+        void display() {
+            System.out.println("Static nested class: " + num);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer.Nested nested = new Outer.Nested();
+        nested.display();
+    }
+}
+56. Local Inner Class
+Defined within a method.
+
+Can access local variables of the method (must be final or effectively final).
+
+java
+Copy
+Edit
+class Outer {
+    void display() {
+        final int localVar = 50;
+        
+        class Inner {
+            void show() {
+                System.out.println("Local inner class: " + localVar);
+            }
+        }
+        
+        Inner inner = new Inner();
+        inner.show();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        outer.display();
+    }
+}
+57. Anonymous Inner Class
+Does not have a name.
+
+Typically used when you need to instantiate a class and immediately override a method.
+
+java
+Copy
+Edit
+class Person {
+    void greet() {
+        System.out.println("Hello, World!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person() {
+            @Override
+            void greet() {
+                System.out.println("Hello from anonymous class!");
+            }
+        };
+        p.greet();
+    }
+}
+Next up: Enums and Annotations!
+
+Shall we continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let’s move on to Enums and Annotations in Java.
+
+58. Enum Basics
+Enums are special classes that represent a group of constants (unchangeable variables).
+
+Enum constants are implicitly public, static, and final.
+
+java
+Copy
+Edit
+enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Day today = Day.MONDAY;
+        System.out.println("Today is: " + today);
+    }
+}
+59. Enum with switch
+Enums are often used with switch statements for cleaner code.
+
+java
+Copy
+Edit
+enum Day {
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Day today = Day.MONDAY;
+        
+        switch (today) {
+            case MONDAY:
+                System.out.println("Start of the week!");
+                break;
+            case FRIDAY:
+                System.out.println("Almost weekend!");
+                break;
+            default:
+                System.out.println("Midweek!");
+        }
+    }
+}
+60. Built-in Annotations
+Java provides some built-in annotations, such as:
+
+@Override: Indicates that a method is overriding a method in a superclass.
+
+@Deprecated: Marks a method as deprecated.
+
+@SuppressWarnings: Suppresses specific compiler warnings.
+
+java
+Copy
+Edit
+class Parent {
+    @Override
+    public String toString() {
+        return "Parent class";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Parent obj = new Parent();
+        System.out.println(obj); // Calls overridden toString method
+    }
+}
+61. Custom Annotations
+You can create custom annotations to add metadata.
+
+java
+Copy
+Edit
+@interface MyAnnotation {
+    String value() default "Default Value";
+}
+
+class Demo {
+    @MyAnnotation(value = "Hello Annotation")
+    public void display() {
+        System.out.println("Display method");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Demo obj = new Demo();
+        obj.display();
+    }
+}
+Next up: Wrapper Classes & Autoboxing/Unboxing!
+
+Ready to go?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Awesome! Let's dive into Wrapper Classes & Autoboxing/Unboxing.
+
+62. Wrapper Classes
+Wrapper classes allow primitive data types (like int, char, etc.) to be treated as objects.
+
+Java provides wrapper classes for each primitive type:
+
+int → Integer
+
+char → Character
+
+double → Double
+
+boolean → Boolean
+
+java
+Copy
+Edit
+int num = 10;
+Integer numWrapper = Integer.valueOf(num); // Wrapping primitive int into Integer
+System.out.println(numWrapper); // Output: 10
+
+char ch = 'A';
+Character chWrapper = Character.valueOf(ch); // Wrapping char into Character
+System.out.println(chWrapper); // Output: A
+63. Autoboxing & Unboxing
+Autoboxing: Automatic conversion from a primitive type to a wrapper class.
+
+Unboxing: Automatic conversion from a wrapper class to a primitive type.
+
+java
+Copy
+Edit
+// Autoboxing (primitive to wrapper)
+int num = 100;
+Integer numWrapper = num;  // Java automatically converts the int to Integer
+
+// Unboxing (wrapper to primitive)
+Integer numWrapper2 = 200;
+int num2 = numWrapper2;    // Java automatically converts Integer to int
+System.out.println(num2);   // Output: 200
+64. Conversions
+You can convert between different primitive types or between primitive types and wrapper classes.
+
+java
+Copy
+Edit
+// Conversion between primitive types
+int intVal = 10;
+double doubleVal = intVal; // Automatic promotion from int to double
+
+// Conversion using valueOf and parse methods
+String str = "123";
+int num = Integer.parseInt(str); // String to int conversion
+Integer numWrapper = Integer.valueOf(str); // String to Integer
+Next up: Common Methods (toString(), equals(), hashCode())
+
+Shall we continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let's move on to Common Methods in Java like toString(), equals(), and hashCode().
+
+65. toString()
+The toString() method is used to convert an object to its string representation.
+
+The default implementation is from the Object class, but you can override it for a custom output.
+
+java
+Copy
+Edit
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{name='" + name + "', age=" + age + "}";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person("Alice", 30);
+        System.out.println(p.toString());  // Output: Person{name='Alice', age=30}
+    }
+}
+66. equals()
+The equals() method is used to compare objects for equality.
+
+By default, it checks reference equality (whether two references point to the same object).
+
+You should override it to check object content equality.
+
+java
+Copy
+Edit
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;  // Same object
+        if (obj == null || getClass() != obj.getClass()) return false;  // Check for null and class type
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);  // Compare attributes
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+        System.out.println(p1.equals(p2));  // Output: true
+    }
+}
+67. hashCode()
+The hashCode() method returns an integer that represents the object's memory address.
+
+It is used in hashing-based collections like HashMap, HashSet.
+
+If two objects are equal (based on equals()), their hashCode() should also be the same.
+
+java
+Copy
+Edit
+class Person {
+    String name;
+    int age;
+
+    Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p1 = new Person("Alice", 30);
+        Person p2 = new Person("Alice", 30);
+        System.out.println(p1.hashCode() == p2.hashCode());  // Output: true
+    }
+}
+Next: Memory Management in Java (Stack vs Heap, Garbage Collection, finalize, etc.)
+
+Ready to go?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Awesome! Let’s dive into Memory Management in Java.
+
+68. Stack vs Heap
+Stack:
+
+Stores method calls, local variables, and references to objects.
+
+Memory is automatically managed, and when a method finishes, the local variables are removed from the stack.
+
+Faster access but limited in size.
+
+Heap:
+
+Stores objects and arrays that are created during program execution.
+
+Memory is dynamically allocated and managed by the garbage collector.
+
+Larger in size compared to the stack but slower to access.
+
+java
+Copy
+Edit
+public class MemoryTest {
+    public static void main(String[] args) {
+        int num = 10; // Stored in stack
+        Person person = new Person(); // Stored in heap
+    }
+}
+
+class Person {
+    String name;
+    int age;
+}
+69. Garbage Collection
+Garbage Collection is a process in Java where unused objects are automatically cleared from memory.
+
+The Garbage Collector (GC) runs in the background, freeing memory used by objects that are no longer reachable.
+
+java
+Copy
+Edit
+class Person {
+    String name;
+    
+    Person(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    protected void finalize() {
+        System.out.println(name + " is being garbage collected");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person("John");
+        p = null;  // Object is now eligible for garbage collection
+        System.gc();  // Suggests JVM to run GC (not guaranteed)
+    }
+}
+70. finalize()
+The finalize() method is called just before an object is garbage collected.
+
+It is used to perform cleanup activities, such as closing file streams or releasing resources.
+
+java
+Copy
+Edit
+class Resource {
+    @Override
+    protected void finalize() {
+        System.out.println("Resource is being cleaned up");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Resource res = new Resource();
+        res = null;  // Object becomes eligible for GC
+        System.gc();  // Suggest garbage collection
+    }
+}
+71. Memory Leaks
+A memory leak occurs when objects that are no longer needed are still referenced, preventing the garbage collector from freeing their memory.
+
+It is important to nullify references when they are no longer in use.
+
+java
+Copy
+Edit
+import java.util.ArrayList;
+
+public class MemoryLeakExample {
+    static ArrayList<String> list = new ArrayList<>();
+    
+    public static void createLeak() {
+        list.add("Leaked Object");
+    }
+
+    public static void main(String[] args) {
+        createLeak();
+        // The object will not be garbage collected because it's still referenced in the static list.
+    }
+}
+Next up: Advanced Concepts on Java, like Streams, Lambda Expressions, and Design Patterns.
+
+Shall we continue?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let's move on to Advanced Java Concepts: Streams, Lambda Expressions, and Design Patterns.
+
+72. Lambda Expressions
+Lambda Expressions are a way to write anonymous methods (functional interfaces) in a more concise way. They enable you to pass behavior as parameters to methods.
+
+The syntax is: (parameters) -> expression.
+
+java
+Copy
+Edit
+interface MathOperation {
+    int operate(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MathOperation add = (a, b) -> a + b;  // Lambda expression for addition
+        System.out.println(add.operate(5, 3)); // Output: 8
+    }
+}
+73. Streams
+Streams are used to process collections of objects in a functional style.
+
+They allow you to perform operations like filtering, mapping, and reducing.
+
+java
+Copy
+Edit
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        // Using stream to filter and sum even numbers
+        int sum = numbers.stream()
+                          .filter(n -> n % 2 == 0)  // Filtering even numbers
+                          .mapToInt(Integer::intValue)
+                          .sum();  // Summing up
+        System.out.println("Sum of even numbers: " + sum); // Output: 12
+    }
+}
+74. Method References
+Method References provide a shorthand syntax for calling a method.
+
+It’s similar to lambda expressions but refers to methods directly.
+
+java
+Copy
+Edit
+import java.util.Arrays;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+        // Using method reference to print each name
+        names.forEach(System.out::println);  // Output: Alice, Bob, Charlie
+    }
+}
+75. Design Patterns
+Design Patterns are reusable solutions to common problems in software design.
+
+Some popular design patterns in Java include:
+
+Singleton: Ensures a class has only one instance.
+
+Factory Method: Provides a way to create objects without specifying the exact class.
+
+Observer: Defines a one-to-many dependency, where a change in one object triggers updates to dependent objects.
+
+76. Singleton Pattern
+The Singleton pattern ensures that a class has only one instance and provides a global point of access to it.
+
+java
+Copy
+Edit
+class Singleton {
+    private static Singleton instance;
+
+    private Singleton() { }
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+        System.out.println(s1 == s2);  // Output: true
+    }
+}
+77. Factory Method Pattern
+The Factory Method pattern defines an interface for creating objects, but the subclasses decide which class to instantiate.
+
+java
+Copy
+Edit
+abstract class Animal {
+    abstract void sound();
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+
+abstract class AnimalFactory {
+    abstract Animal createAnimal();
+}
+
+class DogFactory extends AnimalFactory {
+    @Override
+    Animal createAnimal() {
+        return new Dog();
+    }
+}
+
+class CatFactory extends AnimalFactory {
+    @Override
+    Animal createAnimal() {
+        return new Cat();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        AnimalFactory factory = new DogFactory();
+        Animal animal = factory.createAnimal();
+        animal.sound();  // Output: Woof
+    }
+}
+78. Observer Pattern
+The Observer pattern defines a dependency between objects so that when one object changes its state, all dependent objects are notified.
+
+java
+Copy
+Edit
+import java.util.ArrayList;
+import java.util.List;
+
+interface Observer {
+    void update(String message);
+}
+
+class ConcreteObserver implements Observer {
+    private String name;
+
+    ConcreteObserver(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void update(String message) {
+        System.out.println(name + " received message: " + message);
+    }
+}
+
+class Subject {
+    private List<Observer> observers = new ArrayList<>();
+
+    void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    void notifyObservers(String message) {
+        for (Observer observer : observers) {
+            observer.update(message);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Subject subject = new Subject();
+        Observer observer1 = new ConcreteObserver("Observer 1");
+        Observer observer2 = new ConcreteObserver("Observer 2");
+        subject.addObserver(observer1);
+        subject.addObserver(observer2);
+
+        subject.notifyObservers("Hello Observers!");  // Both observers will receive the message
+    }
+}
+Next, we’ll move to Concurrency topics (Threads, Synchronization, etc.) if you're ready!
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let’s move on to Concurrency in Java, covering Threads, Synchronization, and related concepts.
+
+79. Thread Class
+The Thread class is used to create and manage threads in Java.
+
+A thread is a lightweight process that allows concurrent execution of code.
+
+Creating a Thread using Thread class:
+java
+Copy
+Edit
+class MyThread extends Thread {
+    @Override
+    public void run() {
+        System.out.println("Thread is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread thread = new MyThread();
+        thread.start();  // Starts the thread and calls the run method
+    }
+}
+80. Runnable Interface
+The Runnable interface is another way to create threads. It’s often preferred for implementing multi-threaded applications because it allows a class to extend another class while still being able to run as a thread.
+
+Creating a Thread using Runnable Interface:
+java
+Copy
+Edit
+class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Runnable thread is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyRunnable myRunnable = new MyRunnable();
+        Thread thread = new Thread(myRunnable);
+        thread.start();  // Starts the thread
+    }
+}
+81. Thread Lifecycle
+Threads go through different states during their lifecycle:
+
+New: Thread is created but not yet started.
+
+Runnable: Thread is ready to run and waiting for CPU time.
+
+Blocked: Thread is blocked waiting for resources (e.g., I/O).
+
+Waiting: Thread is waiting for a particular event to occur.
+
+Terminated: Thread has finished executing.
+
+82. Synchronization
+Synchronization in Java is used to control access to shared resources by multiple threads to avoid data corruption.
+
+You can use the synchronized keyword to ensure that only one thread can access a block of code at a time.
+
+Example of Synchronization:
+java
+Copy
+Edit
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {  // Synchronizing the method
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) {
+                counter.increment();
+            }
+        });
+
+        t1.start();
+        t2.start();
+        t1.join();
+        t2.join();
+
+        System.out.println("Final count: " + counter.getCount());  // Output: Final count: 2000
+    }
+}
+In the example above, increment() is synchronized to ensure that one thread updates the count at a time, preventing race conditions.
+
+83. wait/notify
+wait(), notify(), and notifyAll() are used for communication between threads.
+
+wait() pauses the execution of a thread until another thread calls notify() or notifyAll().
+
+Using wait() and notify():
+java
+Copy
+Edit
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+        notify();  // Notify other threads waiting for this condition
+    }
+
+    public synchronized void waitForZero() throws InterruptedException {
+        while (count != 0) {
+            wait();  // Wait until the count is zero
+        }
+        System.out.println("Count is zero");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            try {
+                counter.waitForZero();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            counter.increment();
+            System.out.println("Count incremented");
+        });
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+    }
+}
+84. Executor Framework
+The Executor Framework provides a higher-level replacement for managing threads, providing a pool of threads for tasks.
+
+You can use the ExecutorService to manage a pool of worker threads and execute tasks asynchronously.
+
+Example with Executor Service:
+java
+Copy
+Edit
+import java.util.concurrent.*;
+
+class MyTask implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Task is being executed by: " + Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newFixedThreadPool(2);  // Thread pool with 2 threads
+
+        executorService.submit(new MyTask());  // Submit tasks to the executor
+        executorService.submit(new MyTask());
+
+        executorService.shutdown();  // Shutdown the executor after tasks are completed
+    }
+}
+85. Thread Safety and Atomic Variables
+Atomic variables are used to perform thread-safe operations on variables without needing synchronization.
+
+The java.util.concurrent.atomic package provides atomic classes like AtomicInteger, AtomicBoolean, etc.
+
+Example using AtomicInteger:
+java
+Copy
+Edit
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        AtomicInteger atomicCount = new AtomicInteger(0);
+
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                atomicCount.incrementAndGet();
+            }
+        };
+
+        Thread t1 = new Thread(task);
+        Thread t2 = new Thread(task);
+
+        t1.start();
+        t2.start();
+
+        t1.join();
+        t2.join();
+
+        System.out.println("Final count: " + atomicCount.get());  // Output: Final count: 2000
+    }
+}
+Next up: Java 8+ Features such as Optional, Streams, and New Date/Time API. Ready to proceed?
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Great! Let’s continue with Java 8+ Features, focusing on Optional, Streams, and the New Date/Time API.
+
+86. Optional
+Optional is a container object that may or may not contain a value. It is used to avoid NullPointerExceptions and to represent the absence of a value.
+
+It is part of the java.util package.
+
+Using Optional:
+java
+Copy
+Edit
+import java.util.Optional;
+
+public class Main {
+    public static void main(String[] args) {
+        String name = "John";
+        
+        // Create an Optional object
+        Optional<String> optionalName = Optional.ofNullable(name);
+
+        // Check if the value is present and print it
+        optionalName.ifPresent(n -> System.out.println(n.toUpperCase()));  // Output: JOHN
+
+        // Get the value if present, otherwise provide a default value
+        String defaultName = optionalName.orElse("Default Name");
+        System.out.println(defaultName);  // Output: John
+    }
+}
+Optional.ofNullable() creates an Optional that may or may not contain a value.
+
+ifPresent() performs an action if the value is present.
+
+orElse() provides a default value if the Optional is empty.
+
+87. Streams API
+The Streams API provides a high-level abstraction for performing operations on sequences of data in a functional style. It allows you to process collections (like lists, sets) in a declarative way.
+
+Common operations: filter, map, reduce, collect, forEach, etc.
+
+Basic Example of Streams:
+java
+Copy
+Edit
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        // Using stream to filter and collect even numbers
+        List<Integer> evenNumbers = numbers.stream()
+                                           .filter(n -> n % 2 == 0)  // Filter even numbers
+                                           .collect(Collectors.toList());  // Collect result in a list
+
+        System.out.println(evenNumbers);  // Output: [2, 4, 6]
+    }
+}
+Stream Operations:
+filter(): Filters elements based on a condition.
+
+map(): Transforms elements.
+
+reduce(): Reduces elements to a single value.
+
+forEach(): Iterates over elements.
+
+collect(): Collects elements into a collection.
+
+java
+Copy
+Edit
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> words = Arrays.asList("apple", "banana", "cherry");
+
+        // Converting all words to uppercase and collecting into a list
+        List<String> upperWords = words.stream()
+                                       .map(String::toUpperCase)  // Convert each word to uppercase
+                                       .collect(Collectors.toList());
+
+        System.out.println(upperWords);  // Output: [APPLE, BANANA, CHERRY]
+    }
+}
+88. New Date/Time API (java.time)
+The java.time package, introduced in Java 8, provides a modern approach to working with dates and times, which is thread-safe and easier to use compared to the older java.util.Date and java.util.Calendar classes.
+
+Key classes include:
+
+LocalDate, LocalTime, LocalDateTime: For dates and times without timezone.
+
+ZonedDateTime: For date and time with timezone.
+
+Duration, Period: For measuring time-based amounts.
+
+Using LocalDate and LocalTime:
+java
+Copy
+Edit
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class Main {
+    public static void main(String[] args) {
+        // Getting the current date
+        LocalDate date = LocalDate.now();
+        System.out.println("Current Date: " + date);  // Output: 2025-04-22
+
+        // Getting the current time
+        LocalTime time = LocalTime.now();
+        System.out.println("Current Time: " + time);  // Output: 14:30:15.123
+    }
+}
+Using LocalDateTime and ZonedDateTime:
+java
+Copy
+Edit
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
+import java.time.ZoneId;
+
+public class Main {
+    public static void main(String[] args) {
+        // Getting the current date and time
+        LocalDateTime dateTime = LocalDateTime.now();
+        System.out.println("Current Date and Time: " + dateTime);
+
+        // Getting the current date and time with timezone
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(ZoneId.of("America/New_York"));
+        System.out.println("Current Date and Time (New York): " + zonedDateTime);
+    }
+}
+Duration and Period:
+Duration is used to measure time-based amounts (like hours, minutes, seconds).
+
+Period is used to measure date-based amounts (like years, months, days).
+
+java
+Copy
+Edit
+import java.time.Duration;
+import java.time.LocalTime;
+
+public class Main {
+    public static void main(String[] args) {
+        // Calculate duration between two times
+        LocalTime start = LocalTime.of(10, 15);
+        LocalTime end = LocalTime.of(12, 30);
+
+        Duration duration = Duration.between(start, end);
+        System.out.println("Duration: " + duration.toHours() + " hours " + duration.toMinutes() % 60 + " minutes");
+    }
+}
+With Java 8+, you now have powerful tools like Streams for efficient collection processing, Optional to handle nulls more safely, and a modern Date/Time API to manage time-related operations more effectively.
+
+Would you like to continue with Advanced Java Concepts, such as Garbage Collection, Reflection, or Functional Programming in Java? Let me know!
+
+
+
+
+
+
+You said:
+y
+
+
+ChatGPT said:
+Let's continue with Advanced Java Concepts, starting with Garbage Collection, Reflection, and Functional Programming in Java.
+
+89. Garbage Collection (GC)
+Garbage Collection in Java is the process of automatically reclaiming memory by removing objects that are no longer in use, helping to prevent memory leaks.
+
+The Java Virtual Machine (JVM) performs garbage collection using several algorithms, and it runs in the background to remove objects that are unreachable.
+
+Types of GC Algorithms:
+Serial Garbage Collector: Used for single-threaded applications.
+
+Parallel Garbage Collector: Uses multiple threads for garbage collection.
+
+CMS (Concurrent Mark-Sweep): Focuses on minimizing pause times.
+
+G1 Garbage Collector: Aims to balance high throughput and low pause times.
+
+GC Example:
+java
+Copy
+Edit
+public class Main {
+    public static void main(String[] args) {
+        MyClass obj = new MyClass();
+        obj = null;  // obj is now eligible for GC
+
+        // Suggest to JVM to run garbage collection (it may not run immediately)
+        System.gc();  // Not guaranteed to run immediately
+
+        System.out.println("End of program");
+    }
+}
+
+class MyClass {
+    @Override
+    protected void finalize() {
+        System.out.println("Garbage collected!");
+    }
+}
+The finalize() method is called before an object is garbage collected, allowing you to release resources explicitly, but it's not recommended to rely on it for important cleanup tasks.
+
+90. Reflection
+Reflection in Java is the ability to inspect and manipulate classes, methods, fields, and other metadata at runtime. It's part of the java.lang.reflect package.
+
+Reflection is useful for building frameworks, performing dependency injection, or creating generic libraries that work with any class.
+
+Basic Reflection Example:
+java
+Copy
+Edit
+import java.lang.reflect.Method;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+        // Creating an instance of MyClass using reflection
+        Class<?> cls = Class.forName("MyClass");
+        Object obj = cls.getDeclaredConstructor().newInstance();
+        
+        // Invoking a method using reflection
+        Method method = cls.getMethod("hello");
+        method.invoke(obj);
+    }
+}
+
+class MyClass {
+    public void hello() {
+        System.out.println("Hello from MyClass");
+    }
+}
+Reflection Use Cases:
+Inspecting Classes: You can get information about classes, methods, constructors, etc.
+
+Dynamic Proxy Creation: You can create proxies for interfaces at runtime.
+
+Dependency Injection Frameworks: Reflection is used in DI frameworks like Spring to manage beans.
+
+91. Functional Programming in Java
+Functional Programming (FP) in Java involves writing code that focuses on pure functions and avoids side effects.
+
+Java 8 introduced lambda expressions, functional interfaces, and streams to encourage functional-style programming.
+
+Lambda Expressions:
+Lambda expressions provide a concise way to represent an instance of a functional interface. They enable passing behavior (code) as parameters.
+
+java
+Copy
+Edit
+public class Main {
+    public static void main(String[] args) {
+        // Using a lambda expression to define behavior
+        Runnable r = () -> System.out.println("Hello, World!");
+        r.run();  // Output: Hello, World!
+    }
+}
+Functional Interfaces:
+A functional interface is an interface that has exactly one abstract method. Examples include Runnable, Callable, Comparator, etc.
+
+java
+Copy
+Edit
+@FunctionalInterface
+interface MyFunctionalInterface {
+    void greet(String name);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyFunctionalInterface greet = (name) -> System.out.println("Hello, " + name);
+        greet.greet("John");  // Output: Hello, John
+    }
+}
+Streams with Functional Style:
+The Streams API allows you to process collections in a functional style. Operations on streams can be chained together to form a pipeline.
+
+java
+Copy
+Edit
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie");
+
+        // Use stream to filter and map names
+        List<String> upperNames = names.stream()
+                                       .filter(name -> name.startsWith("A"))
+                                       .map(String::toUpperCase)
+                                       .collect(Collectors.toList());
+
+        System.out.println(upperNames);  // Output: [ALICE]
+    }
+}
+Higher-Order Functions:
+Java allows passing functions as parameters to other functions using lambda expressions. This enables higher-order functions, like map, reduce, etc.
+
+java
+Copy
+Edit
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.function.Function;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+
+        // Function to square each number
+        Function<Integer, Integer> square = (n) -> n * n;
+
+        // Using map to apply the function
+        List<Integer> squaredNumbers = numbers.stream()
+                                               .map(square)
+                                               .collect(Collectors.toList());
+
+        System.out.println(squaredNumbers);  // Output: [1, 4, 9, 16, 25]
+    }
+}
