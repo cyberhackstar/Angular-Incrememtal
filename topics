@@ -1,0 +1,75 @@
+Subtopics
+1. History & Features
+2. JVM, JRE, JDK
+3. Program Structure
+4. Data Types
+5. Variables
+6. Type Casting
+1. Arithmetic, Relational, Logical, Bitwise
+2. if-else, switch
+3. for, while, do-while
+4. break, continue
+1. Class & Object
+2. Constructor
+3. this, super
+4. Inheritance
+5. Polymorphism
+6. Overloading & Overriding
+7. Abstraction, Interface
+8. Encapsulation
+1. String
+2. StringBuilder
+3. StringBuffer
+4. Common Methods
+5. Immutability
+6. String Pool
+7. StringTokenizer
+7. StringTokenizer
+1. 1D & 2D Arrays
+2. Initialization
+3. Traversal
+4. Sorting
+5. Searching
+1. List: ArrayList, LinkedList
+2. Set: HashSet, TreeSet
+3. Map: HashMap, TreeMap
+4. Queue, Deque
+5. Iterator, ListIterator
+6. Comparator, Comparable
+1. try-catch-finally
+2. throw, throws
+3. Checked vs Unchecked
+4. Custom Exceptions
+1. Byte & Character Streams
+2. FileReader, FileWriter
+3. BufferedReader
+4. Serialization & Deserialization
+1. Thread Class
+2. Runnable Interface
+3. Thread Lifecycle
+4. Synchronization
+5. wait/notify
+6. Executor Framework
+1. Built-in Packages
+2. User-defined Packages
+3. Access Levels: public, private, protected, default
+1. Member Inner Class
+2. Static Nested Class
+3. Local Inner Class
+4. Anonymous Inner Class
+1. Enum Basics
+2. Enum with switch
+3. Built-in Annotations
+4. Custom Annotations
+1. Integer, Float, Double, etc.
+2. Autoboxing & Unboxing
+3. Conversions
+1. toString()
+2. equals()
+3. hashCode()
+4. getClass()
+5. clone()
+1. Stack vs Heap
+2. Garbage Collection
+3. finalize()
+4. Memory Leaks
