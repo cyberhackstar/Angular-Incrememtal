@@ -1,0 +1,82 @@
+Bhawesh Sharma
+
+Contact:
+
+Email: bhawesh.sharma@ltimindtree.com
+
+Location: [Your City, State]
+
+Experience Summary
+
+LTIMindtree – Dec 2024 to Present
+
+Software Engineer – Full Stack Engineer (Jul 2025 – Present)
+Software Engineer (Mar 2025 – Jul 2025)
+Graduate Apprentice (Dec 2024 – Mar 2025)
+
+Experienced in designing, developing, and maintaining full-stack web applications using Angular, Java Spring Boot, and MySQL/Postgres.
+
+Hands-on experience with AI-powered modules, microservices architecture, REST APIs, JWT-based authentication, and Kafka streaming for real-time updates.
+
+Worked on car rental management platforms and gym/fitness subscription platforms, implementing booking, subscription management, analytics, and AI-based personalized recommendations.
+
+Project Experience
+Project 1 – Car Rental Management Platform (LTIMindtree, Mumbai)
+
+Team Size: 5 | Duration: Mar 2025 – Jul 2025
+
+Project Description:
+A web-based car rental platform designed to manage vehicle bookings, customer accounts, and payment processing. The system supports real-time vehicle availability, automated booking confirmation, and analytics dashboards for rental trends.
+
+Role & Contribution:
+
+Developed backend REST APIs using Java Spring Boot and PostgreSQL for vehicle inventory and booking management.
+
+Implemented JWT-based authentication and role-based access for admins, customers, and drivers.
+
+Designed a responsive frontend with Angular, HTML, CSS, and TypeScript.
+
+Integrated payment gateway for secure transactions and booking confirmation.
+
+Conducted unit testing using JUnit and API testing with Postman.
+
+Technology & Tools: Angular 10+, HTML, CSS, Java, Spring Boot, PostgreSQL, JWT, JUnit, Maven, REST APIs, GitHub
+
+Project 2 – Gym AI Subscription Platform (Training Project, LTIMindtree)
+
+Team Size: 6 | Duration: Jul 2025 – Present
+
+Project Description:
+An AI-powered fitness and subscription management platform that generates personalized workout and diet plans. Users can track progress, subscribe to plans, and receive real-time recommendations.
+
+Role & Contribution:
+
+Developed full-stack microservices using Angular (frontend), Spring Boot (backend), and FastAPI (AI module).
+
+Integrated AI recommendation engine for personalized exercise and diet plans based on user profile and progress.
+
+Implemented real-time analytics using Kafka and PySpark for tracking user progress and system alerts.
+
+Created secure user authentication with JWT and role-based access control.
+
+Built dynamic and responsive UI dashboards for tracking workouts, subscription history, and analytics insights.
+
+Technology & Tools: Angular 10+, HTML, CSS, Java, Spring Boot, FastAPI, Python, PySpark, Kafka, PostgreSQL, JWT, Docker, GitHub
+
+Education Summary
+
+MCA – Lovely Professional University, Jalandhar, Punjab (Sep 2022 – May 2024)
+
+BCA – University of Rajasthan, Jaipur, Rajasthan (Jun 2019 – Jul 2022)
+
+Technical Skills
+
+Programming & Frameworks: Java, Python, Angular, Spring Boot, PySpark, SQL, Hibernate, REST APIs
+Tools & Databases: Maven, GitHub, MySQL, PostgreSQL, Postman, Thunder Client, Docker, Kafka, JUnit, Swagger
+Other Skills: JWT Authentication, Microservices, FastAPI, Agile/Scrum
+
+Certifications & Training
+
+Oracle Certified Professional: Java SE11 Developer (OCJP)
+
+Completed Orchard Training: Java Full Stack (Core Java, Spring Boot, Angular, HTML, CSS, TypeScript, JavaScript, SQL)
